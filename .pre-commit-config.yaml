@@ -11,17 +11,8 @@ repos:
     hooks:
       - id: pylint
         name: pylint
-        entry: pylint
+        entry: python3 -m pylint
         language: system
         types: [python]
         args: ["-rn", "-sn", "--rcfile=.pylintrc", "--fail-on=I"]
         exclude: tests(/\w*)*/functional/|tests/input|tests(/\w*)*data/|doc/
-      - id: unittest
-        name: unittest
-        entry: /Users/dongvothanh/.DongvtPython/bin/python3 -m unittest
-        args: ["-v"]
-        language: system
-        types: [python]
-        pass_filenames: true
-        stages: [commit]
-        verbose: true
