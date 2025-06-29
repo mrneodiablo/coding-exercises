@@ -74,6 +74,69 @@ class LinkedList:
             return tmp
         return None
 
+    def insert(self, index: int, value) -> bool:
+        if index < 0 or index > self.length:
+            return False
+
+        if index == 0:
+            self.prepend(Node(value))
+            return True
+
+        if index == self.length:
+            self.append(Node(value))
+            return True
+
+        pre = self.head
+        count = 0
+        while count < index - 1:
+            count += 1
+            pre = pre.next
+
+        new_code = Node(value, pre.next)
+        pre.next = new_code
+
+        # another implement more simple, that will leverage existing function
+        # tmp = self.get(index-1)
+        # new_code = Node(value,self.get(index))
+        # tmp.next = new_code
+
+        self.length += 1
+        return True
+
+    def remove(self, index: int) -> bool:
+        if index < 0 or index >= self.length:
+            return False
+
+        if index == 0:
+            self.pop_first()
+            return True
+
+        if self.length - 1 == index:
+            self.pop_last()
+            return True
+
+        previous = self.get(index - 1)
+        previous.next = previous.next.next
+        self.length -= 1
+        return True
+
+    def reverse(self) -> bool:
+        if self.length <= 1:
+            return True
+
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        before = None
+        after = temp
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
+        return True
+
     def print_list(self):
         if self.length == 0:
             print("None")
@@ -92,5 +155,5 @@ my_linked_list.append(Node(10))
 
 print(my_linked_list.print_list())
 
-my_linked_list.set(2, 10)
+my_linked_list.reverse()
 print(my_linked_list.print_list())
