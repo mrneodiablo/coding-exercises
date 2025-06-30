@@ -137,6 +137,44 @@ class LinkedList:
 
         return True
 
+    def remove_duplicates(self) -> bool:
+        # option 1: using a set (O(n))
+        # if self.head is None:
+        #     return False
+
+        # check_value = set()
+        # fast = self.head
+        # previous = fast
+        # while fast:
+        #     if fast.value not in check_value:
+        #         check_value.add(fast.value)
+        #         previous = fast
+        #     else:
+        #         previous.next = fast.next
+        #         self.length -= 1
+        #     fast = fast.next
+
+        # return True
+
+        # option 2: using 2 loops (O(n^2))
+        if self.head is None:
+            return False
+        slow = self.head
+        fast = self.head
+
+        while slow:
+            fast = slow.next
+            previous = slow
+            while fast:
+                if fast.value == slow.value:
+                    previous.next = fast.next
+                    self.length -= 1
+                else:
+                    previous = fast
+                fast = fast.next
+            slow = slow.next
+        return True
+
     def print_list(self):
         if self.length == 0:
             print("None")
@@ -149,11 +187,15 @@ class LinkedList:
 
 
 my_linked_list = LinkedList(4)
-my_linked_list.append(Node(1))
+my_linked_list.append(Node(4))
+my_linked_list.append(Node(4))
+my_linked_list.append(Node(2))
+my_linked_list.append(Node(2))
+my_linked_list.append(Node(2))
+my_linked_list.append(Node(2))
 my_linked_list.append(Node(3))
-my_linked_list.append(Node(10))
 
-print(my_linked_list.print_list())
 
-my_linked_list.reverse()
+# print(my_linked_list.print_list())
+my_linked_list.remove_duplicates()
 print(my_linked_list.print_list())
