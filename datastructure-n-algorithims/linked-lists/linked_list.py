@@ -134,7 +134,6 @@ class LinkedList:
             temp.next = before
             before = temp
             temp = after
-
         return True
 
     def remove_duplicates(self) -> bool:
@@ -176,26 +175,14 @@ class LinkedList:
         return True
 
     def print_list(self):
+        output = []
         if self.length == 0:
             print("None")
             return
 
         temp = self.head
         while temp is not None:
-            print(temp.value)
+            output.append(temp.value)
             temp = temp.next
 
-
-my_linked_list = LinkedList(4)
-my_linked_list.append(Node(4))
-my_linked_list.append(Node(4))
-my_linked_list.append(Node(2))
-my_linked_list.append(Node(2))
-my_linked_list.append(Node(2))
-my_linked_list.append(Node(2))
-my_linked_list.append(Node(3))
-
-
-# print(my_linked_list.print_list())
-my_linked_list.remove_duplicates()
-print(my_linked_list.print_list())
+        print(output)
