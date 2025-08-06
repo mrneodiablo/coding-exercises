@@ -1,6 +1,6 @@
 [MAIN]
 
-disable=C0114,C0115,C0116,C0103,R0903,W0622,R0801,C0201,W0102,C0200,C0301,W0105,R0912,C0325,R1710
+disable=C0114,C0115,C0116,C0103,R0903,W0622,R0801,C0201,W0102,C0200,C0301,W0105,R0912,C0325,R1710,W1309,R1702
 # Analyse import fallback blocks. This can be used to support both Python 2 and
 # 3 compatible code, which means that the block might have code that exists
 # only in one or another interpreter, leading to false positives when analysed.
