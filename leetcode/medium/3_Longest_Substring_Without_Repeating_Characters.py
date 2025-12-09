@@ -35,7 +35,8 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.lengthOfLongestSubstring(s)),
             str(expect),
-            "incorrect, expect is " + str(expect))
+            "incorrect, expect is " + str(expect),
+        )
 
 
 if __name__ == "__main__":

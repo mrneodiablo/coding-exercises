@@ -41,31 +41,27 @@ class TestFunctions(unittest.TestCase):
         # tree = [3,9,20,null,null,15,7]
         tree_1 = TreeNode(
             3,
-            TreeNode(9,
-                     TreeNode(1),
-                     TreeNode(10)
-                     ),
-            TreeNode(20,
-                     TreeNode(15),
-                     TreeNode(7),
-                     ),
+            TreeNode(9, TreeNode(1), TreeNode(10)),
+            TreeNode(
+                20,
+                TreeNode(15),
+                TreeNode(7),
+            ),
         )
         tree_2 = TreeNode(
             3,
-            TreeNode(9,
-                     TreeNode(1),
-                     TreeNode(10)
-                     ),
-            TreeNode(20,
-                     TreeNode(15),
-                     TreeNode(7),
-                     ),
+            TreeNode(9, TreeNode(1), TreeNode(10)),
+            TreeNode(
+                20,
+                TreeNode(15),
+                TreeNode(7),
+            ),
         )
         expect = True
         self.assertEqual(
             self.solution.isSameTree(tree_1, tree_2),
             expect,
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

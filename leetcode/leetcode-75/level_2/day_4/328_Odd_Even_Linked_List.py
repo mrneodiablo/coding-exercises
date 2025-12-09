@@ -53,14 +53,10 @@ class TestFunctions(unittest.TestCase):
         # test case
         head = ListNode(1,
                         ListNode(2,
-                                 ListNode(3,
-                                          ListNode(4,
-                                                   ListNode(5)))))
+                                 ListNode(3, ListNode(4, ListNode(5)))))
         expect = ListNode(1,
                           ListNode(3,
-                                   ListNode(5,
-                                            ListNode(2,
-                                                     ListNode(4)))))
+                                   ListNode(5, ListNode(2, ListNode(4)))))
         self.assertEqual(
             travesalLinkList(self.solution.oddEvenList(head)),
             travesalLinkList(expect),

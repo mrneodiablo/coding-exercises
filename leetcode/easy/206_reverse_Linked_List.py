@@ -43,10 +43,11 @@ class TestFunctions(unittest.TestCase):
         head = ListNode(1, ListNode(2, ListNode(3, ListNode(4))))
         expect = ListNode(4, ListNode(3, ListNode(2, ListNode(1))))
 
-        self.assertEqual(sum_link_list(self.solution.reverseList(head)),
-                         sum_link_list(expect),
-                         "incorrect, expect is " + str(sum_link_list(expect))
-                         )
+        self.assertEqual(
+            sum_link_list(self.solution.reverseList(head)),
+            sum_link_list(expect),
+            "incorrect, expect is " + str(sum_link_list(expect)),
+        )
 
 
 if __name__ == "__main__":

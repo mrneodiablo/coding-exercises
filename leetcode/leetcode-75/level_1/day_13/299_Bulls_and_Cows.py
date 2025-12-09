@@ -18,35 +18,35 @@ class TestFunctions(unittest.TestCase):
         super().__init__(methodName)
         self.solution = Solution()
 
-    # def test_run_1(self):
-    #     secret = "1807"
-    #     guess = "7810"
-    #     expect = "1A3B"
-    #     self.assertEqual(
-    #         str(self.solution.getHint(secret, guess)),
-    #         str(expect),
-    #         "incorrect, expect is " + str(expect)
-    #     )
+    def test_run_1(self):
+        secret = "1807"
+        guess = "7810"
+        expect = "1A3B"
+        self.assertEqual(
+            str(self.solution.getHint(secret, guess)),
+            str(expect),
+            "incorrect, expect is " + str(expect),
+        )
 
-    # def test_run_2(self):
-    #     secret = "1123"
-    #     guess  = "0111"
-    #     expect = "1A1B"
-    #     self.assertEqual(
-    #         str(self.solution.getHint(secret, guess)),
-    #         str(expect),
-    #         "incorrect, expect is " + str(expect)
-    #     )
+    def test_run_2(self):
+        secret = "1123"
+        guess = "0111"
+        expect = "1A1B"
+        self.assertEqual(
+            str(self.solution.getHint(secret, guess)),
+            str(expect),
+            "incorrect, expect is " + str(expect),
+        )
 
-    # def test_run_3(self):
-    #     secret = "1122"
-    #     guess  = "2211"
-    #     expect = "0A4B"
-    #     self.assertEqual(
-    #         str(self.solution.getHint(secret, guess)),
-    #         str(expect),
-    #         "incorrect, expect is " + str(expect)
-    #     )
+    def test_run_3(self):
+        secret = "1122"
+        guess = "2211"
+        expect = "0A4B"
+        self.assertEqual(
+            str(self.solution.getHint(secret, guess)),
+            str(expect),
+            "incorrect, expect is " + str(expect),
+        )
 
     def test_run_4(self):
         secret = "1122"

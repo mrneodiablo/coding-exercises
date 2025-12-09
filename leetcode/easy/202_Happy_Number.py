@@ -11,6 +11,6 @@ class Solution:
             tmp = 0
             break_loop.add(n)
             for i in str(n):
-                tmp += int(i)**2
+                tmp += int(i) ** 2
             n = tmp
         return True

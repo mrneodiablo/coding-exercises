@@ -27,18 +27,16 @@ class TestFunctions(unittest.TestCase):
         )
 
     def test_run_2(self):
-        words = [
-            "the",
-            "day",
-            "is",
-            "sunny",
-            "the",
-            "the",
-            "the",
-            "sunny",
-            "is",
-            "is"
-        ]
+        words = ["the",
+                 "day",
+                 "is",
+                 "sunny",
+                 "the",
+                 "the",
+                 "the",
+                 "sunny",
+                 "is",
+                 "is"]
         k = 4
         expect = ["the", "is", "sunny", "day"]
         self.assertEqual(
