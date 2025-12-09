@@ -1,4 +1,3 @@
-
 import unittest
 
 
@@ -7,7 +6,7 @@ class Solution:
         for character in s:
             if character in t:
                 index = t.index(character)
-                t = str(t[index+1:])
+                t = str(t[index + 1:])
             else:
                 return False
         return True
@@ -23,24 +22,33 @@ class TestSequenceFunctions(unittest.TestCase):
         s = "abc"
         t = "ahbgdc"
         expect = True
-        self.assertEqual(self.solution.isSubsequence(s, t), expect,
-                         "incorrect, expect is " + str(expect))
+        self.assertEqual(
+            self.solution.isSubsequence(s, t),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
     def test_run_2(self):
         # test case
         s = "axc"
         t = "ahbgdc"
         expect = False
-        self.assertEqual(self.solution.isSubsequence(s, t), expect,
-                         "incorrect, expect is " + str(expect))
+        self.assertEqual(
+            self.solution.isSubsequence(s, t),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
     def test_run_3(self):
         # test case
         s = "axc"
         t = "acxbgd"
         expect = False
-        self.assertEqual(self.solution.isSubsequence(s, t), expect,
-                         "incorrect, expect is " + str(expect))
+        self.assertEqual(
+            self.solution.isSubsequence(s, t),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
 
 if __name__ == "__main__":

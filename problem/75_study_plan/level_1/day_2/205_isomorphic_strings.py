@@ -27,24 +27,33 @@ class TestSequenceFunctions(unittest.TestCase):
         s = "egg"
         t = "add"
         expect = True
-        self.assertEqual(self.solution.isIsomorphic(s, t), expect,
-                         "incorrect, expect is " + str(expect))
+        self.assertEqual(
+            self.solution.isIsomorphic(s, t),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
     def test_run_2(self):
         # test case
         s = "foo"
         t = "bar"
         expect = False
-        self.assertEqual(self.solution.isIsomorphic(s, t), expect,
-                         "incorrect, expect is " + str(expect))
+        self.assertEqual(
+            self.solution.isIsomorphic(s, t),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
     def test_run_3(self):
         # test case
         s = "paper"
         t = "title"
         expect = True
-        self.assertEqual(self.solution.isIsomorphic(s, t), expect,
-                         "incorrect, expect is " + str(expect))
+        self.assertEqual(
+            self.solution.isIsomorphic(s, t),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
 
 if __name__ == "__main__":

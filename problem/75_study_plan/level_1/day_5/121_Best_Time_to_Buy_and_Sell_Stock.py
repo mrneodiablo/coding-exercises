@@ -26,7 +26,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             self.solution.maxProfit(prices),
             expect,
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -36,7 +36,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             self.solution.maxProfit(prices),
             expect,
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

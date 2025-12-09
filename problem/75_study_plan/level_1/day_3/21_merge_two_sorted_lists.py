@@ -1,4 +1,3 @@
-
 from typing import Optional
 import unittest
 
@@ -18,9 +17,9 @@ def sum_link_list(linkList: ListNode):
 
 
 class Solution:
-    def mergeTwoLists(self,
-                      list1: Optional[ListNode],
-                      list2: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeTwoLists(
+        self, list1: Optional[ListNode], list2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         cur = dummy = ListNode()
         while list1 and list2:
             if list1.val < list2.val:
@@ -48,12 +47,14 @@ class TestFunctions(unittest.TestCase):
         list1 = ListNode(1, ListNode(2, ListNode(4, None)))
         list2 = ListNode(1, ListNode(3, ListNode(4, None)))
 
-        expect = ListNode(1, ListNode(1, ListNode(
-            2, ListNode(3, ListNode(4, ListNode(4))))))
+        expect = ListNode(
+            1, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(4)))))
+        )
         self.assertEqual(
             sum_link_list(self.solution.mergeTwoLists(list1, list2)),
             sum_link_list(expect),
-            "incorrect, expect is " + str(sum_link_list(expect)))
+            "incorrect, expect is " + str(sum_link_list(expect)),
+        )
 
     def test_run_2(self):
         # test case
@@ -64,7 +65,8 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             sum_link_list(self.solution.mergeTwoLists(list1, list2)),
             sum_link_list(expect),
-            "incorrect, expect is " + str(sum_link_list(expect)))
+            "incorrect, expect is " + str(sum_link_list(expect)),
+        )
 
     def test_run_3(self):
         # test case
@@ -75,7 +77,8 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             sum_link_list(self.solution.mergeTwoLists(list1, list2)),
             sum_link_list(expect),
-            "incorrect, expect is " + str(sum_link_list(expect)))
+            "incorrect, expect is " + str(sum_link_list(expect)),
+        )
 
 
 if __name__ == "__main__":

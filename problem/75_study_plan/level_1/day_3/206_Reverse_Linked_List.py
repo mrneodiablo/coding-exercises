@@ -1,4 +1,3 @@
-
 from typing import Optional
 import unittest
 
@@ -39,10 +38,20 @@ class TestFunctions(unittest.TestCase):
     def test_run_1(self):
         # test case
         list1 = ListNode(1, ListNode(2, ListNode(4, None)))
-        expect = ListNode(4, ListNode(2, ListNode(1,)))
-        self.assertEqual(sum_link_list(self.solution.reverseList(list1)),
-                         sum_link_list(expect),
-                         "incorrect, expect is " + str(sum_link_list(expect)))
+        expect = ListNode(
+            4,
+            ListNode(
+                2,
+                ListNode(
+                    1,
+                ),
+            ),
+        )
+        self.assertEqual(
+            sum_link_list(self.solution.reverseList(list1)),
+            sum_link_list(expect),
+            "incorrect, expect is " + str(sum_link_list(expect)),
+        )
 
 
 if __name__ == "__main__":

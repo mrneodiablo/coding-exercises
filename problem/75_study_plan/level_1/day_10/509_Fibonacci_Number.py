@@ -1,4 +1,3 @@
-
 import unittest
 
 
@@ -9,8 +8,8 @@ class Solution:
             return 0
         if n == 1:
             return 1
-        for i in range(2, n+1):
-            number = fibonacci_list[i-1] + fibonacci_list[i-2]
+        for i in range(2, n + 1):
+            number = fibonacci_list[i - 1] + fibonacci_list[i - 2]
             fibonacci_list.append(number)
         return number
 
@@ -26,7 +25,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.fib(n)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -35,7 +34,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.fib(n)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_3(self):
@@ -44,7 +43,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.fib(n)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

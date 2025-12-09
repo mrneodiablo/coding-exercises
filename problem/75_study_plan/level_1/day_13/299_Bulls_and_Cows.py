@@ -4,13 +4,13 @@ import unittest
 
 class Solution:
     def getHint(self, secret: str, guess: str) -> str:
-        dic = Counter(secret)-Counter(guess)
+        dic = Counter(secret) - Counter(guess)
         bulls = 0
         for i in range(len(secret)):
             if secret[i] == guess[i]:
                 bulls += 1
-        cows = len(secret)-sum(dic.values())-bulls
-        return str(bulls)+"A"+str(cows)+"B"
+        cows = len(secret) - sum(dic.values()) - bulls
+        return str(bulls) + "A" + str(cows) + "B"
 
 
 class TestFunctions(unittest.TestCase):
@@ -55,7 +55,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.getHint(secret, guess)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

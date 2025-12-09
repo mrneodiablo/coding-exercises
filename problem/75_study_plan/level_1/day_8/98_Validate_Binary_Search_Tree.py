@@ -1,4 +1,3 @@
-
 from typing import Optional
 import unittest
 
@@ -20,6 +19,7 @@ class Solution:
             inorder(root.left)
             arr.append(root.val)
             inorder(root.right)
+
         inorder(root)
         return arr == list(sorted(set(arr)))
 
@@ -31,16 +31,12 @@ class TestFunctions(unittest.TestCase):
 
     def test_run_1(self):
         # test case
-        tree = TreeNode(
-            2,
-            TreeNode(1),
-            TreeNode(3)
-        )
+        tree = TreeNode(2, TreeNode(1), TreeNode(3))
         expect = True
         self.assertEqual(
             self.solution.isValidBST(tree),
             expect,
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -48,16 +44,17 @@ class TestFunctions(unittest.TestCase):
         tree = TreeNode(
             5,
             TreeNode(1),
-            TreeNode(4,
-                     TreeNode(3),
-                     TreeNode(6),
-                     )
+            TreeNode(
+                4,
+                TreeNode(3),
+                TreeNode(6),
+            ),
         )
         expect = False
         self.assertEqual(
             self.solution.isValidBST(tree),
             expect,
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_3(self):
@@ -67,23 +64,17 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             self.solution.isValidBST(tree),
             expect,
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_4(self):
         # test case
-        tree = TreeNode(5,
-                        TreeNode(4),
-                        TreeNode(6,
-                                 TreeNode(3),
-                                 TreeNode(7)
-                                 )
-                        )
+        tree = TreeNode(5, TreeNode(4), TreeNode(6, TreeNode(3), TreeNode(7)))
         expect = False
         self.assertEqual(
             self.solution.isValidBST(tree),
             expect,
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

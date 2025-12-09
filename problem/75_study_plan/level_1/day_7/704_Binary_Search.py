@@ -1,4 +1,3 @@
-
 from typing import List
 import unittest
 
@@ -36,7 +35,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.search(nums, target)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -47,7 +46,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.search(nums, target)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_3(self):
@@ -58,7 +57,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.search(nums, target)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

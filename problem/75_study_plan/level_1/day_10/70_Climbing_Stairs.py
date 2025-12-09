@@ -42,8 +42,8 @@ class Solution:
         if n == 2:
             return 2
         fibonaci = [1, 2]
-        for i in range(3, n+1):
-            number = fibonaci[i-2-1]+fibonaci[i-1-1]
+        for i in range(3, n + 1):
+            number = fibonaci[i - 2 - 1] + fibonaci[i - 1 - 1]
             fibonaci.append(number)
         return number
 
@@ -59,7 +59,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.climbStairs(n)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -68,7 +68,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.climbStairs(n)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

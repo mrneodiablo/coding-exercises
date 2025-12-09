@@ -16,7 +16,7 @@ class Solution:
             s2 = -heappop(stones)  # the second-heaviest stone; s2 <= s1
             if s1 > s2:
                 # push the NEGATED value of s1-s2; i.e., s2-s1
-                heappush(stones, s2-s1)
+                heappush(stones, s2 - s1)
             # else s1 == s2; both stones are destroyed
         return 0  # if no more stones remain
 
@@ -32,7 +32,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.lastStoneWeight(stones)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -41,7 +41,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.lastStoneWeight(stones)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

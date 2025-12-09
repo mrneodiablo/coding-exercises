@@ -30,12 +30,12 @@ class Solution:
                 if value % 2 == 0:
                     out += value
                 else:
-                    out += (value-1)
+                    out += value - 1
                     odd += 1
             else:
                 odd += 1
 
-        return out+1 if odd > 0 else out
+        return out + 1 if odd > 0 else out
 
 
 class TestFunctions(unittest.TestCase):
@@ -50,7 +50,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             self.solution.longestPalindrome(prices),
             expect,
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -60,7 +60,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             self.solution.longestPalindrome(prices),
             expect,
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

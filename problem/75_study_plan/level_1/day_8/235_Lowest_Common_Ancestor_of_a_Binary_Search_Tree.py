@@ -9,10 +9,9 @@ class TreeNode:
 
 
 class Solution:
-    def lowestCommonAncestor(self,
-                             root: 'TreeNode',
-                             p: 'TreeNode',
-                             q: 'TreeNode') -> 'TreeNode':
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
         def LCA(node, x, y):
             if x.val < node.val and y.val < node.val:
                 return LCA(node.left, x, y)
@@ -32,35 +31,37 @@ class TestFunctions(unittest.TestCase):
         # test case
         tree = TreeNode(
             6,
-            TreeNode(2,
-                     TreeNode(0),
-                     TreeNode(4,
-                              TreeNode(3),
-                              TreeNode(5),
-                              )
-                     ),
-            TreeNode(8,
-                     TreeNode(7),
-                     TreeNode(9)
-                     )
+            TreeNode(
+                2,
+                TreeNode(0),
+                TreeNode(
+                    4,
+                    TreeNode(3),
+                    TreeNode(5),
+                ),
+            ),
+            TreeNode(8, TreeNode(7), TreeNode(9)),
         )
-        p = TreeNode(2,
-                     TreeNode(0),
-                     TreeNode(4,
-                              TreeNode(3),
-                              TreeNode(5),
-                              )
-                     )
-        q = TreeNode(4,
-                     TreeNode(3),
-                     TreeNode(5),
-                     )
+        p = TreeNode(
+            2,
+            TreeNode(0),
+            TreeNode(
+                4,
+                TreeNode(3),
+                TreeNode(5),
+            ),
+        )
+        q = TreeNode(
+            4,
+            TreeNode(3),
+            TreeNode(5),
+        )
 
         expect = 2
         self.assertEqual(
             self.solution.lowestCommonAncestor(tree, p, q).val,
             expect,
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

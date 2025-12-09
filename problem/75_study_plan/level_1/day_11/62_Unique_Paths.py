@@ -16,9 +16,9 @@ class Solution:
                     if j <= 0:
                         out_n.append(1)
                     else:
-                        out_n.append(data[i-1][j]+out_n[j-1])
+                        out_n.append(data[i - 1][j] + out_n[j - 1])
             data.append(out_n)
-        return data[len(data)-1][-1:][0]
+        return data[len(data) - 1][-1:][0]
 
 
 class TestFunctions(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.uniquePaths(m, n)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -43,7 +43,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.uniquePaths(m, n)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

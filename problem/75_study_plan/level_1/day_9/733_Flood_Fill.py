@@ -3,10 +3,9 @@ import unittest
 
 
 class Solution:
-    def floodFill(self,
-                  image: List[List[int]],
-                  sr: int, sc: int,
-                  color: int) -> List[List[int]]:
+    def floodFill(
+        self, image: List[List[int]], sr: int, sc: int, color: int
+    ) -> List[List[int]]:
         R, C = len(image), len(image[0])
         oldColor = image[sr][sc]
         if oldColor == color:
@@ -16,13 +15,13 @@ class Solution:
             if image[r][c] == oldColor:
                 image[r][c] = color
                 if r >= 1:
-                    bfs(r-1, c)
-                if r+1 < R:
-                    bfs(r+1, c)
+                    bfs(r - 1, c)
+                if r + 1 < R:
+                    bfs(r + 1, c)
                 if c >= 1:
-                    bfs(r, c-1)
-                if c+1 < C:
-                    bfs(r, c+1)
+                    bfs(r, c - 1)
+                if c + 1 < C:
+                    bfs(r, c + 1)
 
         bfs(sr, sc)
         return image
@@ -46,7 +45,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.floodFill(image, sr, sc, color)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -62,7 +61,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.floodFill(image, sr, sc, color)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

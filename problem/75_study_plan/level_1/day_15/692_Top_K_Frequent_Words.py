@@ -23,18 +23,28 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.topKFrequent(words, k)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
-        words = ["the", "day", "is", "sunny", "the",
-                 "the", "the", "sunny", "is", "is"]
+        words = [
+            "the",
+            "day",
+            "is",
+            "sunny",
+            "the",
+            "the",
+            "the",
+            "sunny",
+            "is",
+            "is"
+        ]
         k = 4
         expect = ["the", "is", "sunny", "day"]
         self.assertEqual(
             str(self.solution.topKFrequent(words, k)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

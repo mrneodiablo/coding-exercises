@@ -1,4 +1,3 @@
-
 import unittest
 
 
@@ -12,7 +11,8 @@ class Solution:
     def firstBadVersion(self, n: int, badVersion: int) -> int:
         low = 1
         high = n
-        midle = (high+low)//2
+        midle = (high + low) // 2
+        first_bad_version = None
 
         # if first version is base return anyway
         if isBadVersion(low, badVersion):
@@ -24,11 +24,11 @@ class Solution:
             if midle_bad_version is True:
                 first_bad_version = midle
                 high = midle - 1
-                midle = (high+low)//2
+                midle = (high + low) // 2
 
             if midle_bad_version is False:
                 low = midle + 1
-                midle = (high+low)//2
+                midle = (high + low) // 2
 
         return first_bad_version
 
@@ -46,7 +46,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.firstBadVersion(num, badversion)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -57,7 +57,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.firstBadVersion(num, badversion)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

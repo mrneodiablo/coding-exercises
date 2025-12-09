@@ -7,8 +7,8 @@ class Solution:
         out = []
         sort_p = list(p)
         sort_p.sort()
-        for i in range(0, len(s)-len(p)+1):
-            compare = list(s[i:i+len(p)])
+        for i in range(0, len(s) - len(p) + 1):
+            compare = list(s[i: i + len(p)])
             compare.sort()
             if compare == sort_p:
                 out.append(i)
@@ -27,7 +27,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.findAnagrams(s, p)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -37,7 +37,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.findAnagrams(s, p)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

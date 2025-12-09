@@ -1,4 +1,3 @@
-
 from typing import List, Optional
 import unittest
 
@@ -15,7 +14,6 @@ class Solution:
         output = []
 
         def bfs(curr=root, level=0):
-            nonlocal output
             if curr:
                 if len(output) > level:
                     output[level].append(curr.val)
@@ -38,21 +36,19 @@ class TestFunctions(unittest.TestCase):
         # tree = [3,9,20,null,null,15,7]
         tree = TreeNode(
             3,
-            TreeNode(9,
-                     TreeNode(1),
-                     TreeNode(10)
-                     ),
-            TreeNode(20,
-                     TreeNode(15),
-                     TreeNode(7),
-                     ),
+            TreeNode(9, TreeNode(1), TreeNode(10)),
+            TreeNode(
+                20,
+                TreeNode(15),
+                TreeNode(7),
+            ),
         )
 
         expect = [[3], [9, 20], [1, 10, 15, 7]]
         self.assertEqual(
             str(self.solution.levelOrder(tree)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 
