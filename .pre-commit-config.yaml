@@ -23,5 +23,5 @@ repos:
         types: [python]
         pass_filenames: true
         stages: [pre-commit]
-        files: ^leetcode/.*\.py$
+        files: ^(leetcode|neetcode|udemy-data-structure-n-algorithms)/.*\.py$
         verbose: true
