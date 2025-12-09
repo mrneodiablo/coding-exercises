@@ -1,3 +1,52 @@
-__pycache__
-*__pycache__
-.vscode
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Credentials and keys
+*.pem
+*.key
+*.p12
+credentials.json
+config.json
+secrets.json
+
+# Python package files
+*.egg-info/
+dist/
+build/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Local configuration
+local_settings.py
