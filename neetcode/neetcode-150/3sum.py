@@ -27,6 +27,7 @@ Explanation: The only possible triplet does not sum up to 0.
 """
 
 from typing import List
+import unittest
 
 
 class Solution:
@@ -85,9 +86,39 @@ class Solution:
         return result
 
 
-if __name__ == "__main__":
-    solution = Solution()
+class TestFunctions(unittest.TestCase):
 
-    nums_test = [-1, 0, 1, 2, -1, -4]
-    print(solution.threeSum(nums_test))
-    # expect [[-1,-1,2],[-1,0,1]]
+    def test_case_1(self):
+        solution = Solution()
+        nums_test = [-1, 0, 1, 2, -1, -4]
+        expect = [[-1, -1, 2], [-1, 0, 1]]
+        self.assertEqual(
+            solution.threeSum(nums_test),
+            expect,
+            f"incorrect, expect is {expect}",
+        )
+
+    def test_case_2(self):
+        solution = Solution()
+        nums_test = [0, 1, 1]
+        expect = []
+        self.assertEqual(
+            solution.threeSum(nums_test),
+            expect,
+            f"incorrect, expect is {expect}",
+        )
+
+    def test_case_3(self):
+        solution = Solution()
+        nums_test = [0, 0, 0]
+        expect = [[0, 0, 0]]
+        self.assertEqual(
+            solution.threeSum(nums_test),
+            expect,
+            f"incorrect, expect is {expect}",
+        )
+
+
+if __name__ == "__main__":
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestFunctions)
+    testResult = unittest.TextTestRunner(verbosity=2).run(suite)

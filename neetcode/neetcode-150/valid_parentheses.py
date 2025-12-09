@@ -24,6 +24,8 @@ Input: s = "()[]{}"
 Output: true
 """
 
+import unittest
+
 
 class Solution:
     def isValid(self, s: str) -> bool:
@@ -47,37 +49,29 @@ class Solution:
         return len(stack) == 0
 
 
-# Test cases
-def test_valid_parentheses():
-    solution = Solution()
+class TestFunctions(unittest.TestCase):
 
-    # Test case 1: Simple valid case - single type of brackets
-    # Basic parentheses that are properly matched
-    assert solution.isValid("()")
-    print("Test case 1 passed: Simple valid parentheses")
+    def test_simple_valid(self):
+        solution = Solution()
+        self.assertEqual(solution.isValid("()"), True, "Simple valid parentheses")
 
-    # Test case 2: Multiple types valid - all bracket types mixed
-    # All three types of brackets in correct order
-    assert solution.isValid("()[]{}")
-    print("Test case 2 passed: Multiple valid bracket types")
+    def test_multiple_types_valid(self):
+        solution = Solution()
+        self.assertEqual(solution.isValid("()[]{}"), True, "Multiple valid bracket types")
 
-    # Test case 3: Nested valid case - brackets inside brackets
-    # Properly nested structure
-    assert solution.isValid("([{}])")
-    print("Test case 3 passed: Nested valid brackets")
+    def test_nested_valid(self):
+        solution = Solution()
+        self.assertEqual(solution.isValid("([{}])"), True, "Nested valid brackets")
 
-    # Test case 4: Invalid case - wrong closing order
-    # Opening bracket but wrong type of closing bracket
-    assert not solution.isValid("([)]")
-    print("Test case 4 passed: Invalid wrong closing order")
+    def test_invalid_wrong_order(self):
+        solution = Solution()
+        self.assertEqual(solution.isValid("([)]"), False, "Invalid wrong closing order")
 
-    # Test case 5: Invalid case - unmatched opening bracket
-    # Extra opening bracket without matching closing
-    assert not solution.isValid("((")
-    print("Test case 5 passed: Invalid unmatched opening bracket")
-
-    print("All test cases passed!")
+    def test_invalid_unmatched(self):
+        solution = Solution()
+        self.assertEqual(solution.isValid("(("), False, "Invalid unmatched opening bracket")
 
 
 if __name__ == "__main__":
-    test_valid_parentheses()
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestFunctions)
+    testResult = unittest.TextTestRunner(verbosity=2).run(suite)

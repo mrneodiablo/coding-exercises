@@ -25,6 +25,7 @@ Output: [0,1]
 """
 
 from typing import List
+import unittest
 
 
 class Solution:
@@ -42,9 +43,42 @@ class Solution:
         return None
 
 
-nums_test = [3, 2, 4]
-target_test = 6
-# [1,2]
+class TestFunctions(unittest.TestCase):
 
-solution = Solution()
-print(solution.twoSum(nums_test, target_test))
+    def test_case_1(self):
+        solution = Solution()
+        nums_test = [2, 7, 11, 15]
+        target_test = 9
+        expect = [0, 1]
+        self.assertEqual(
+            solution.twoSum(nums_test, target_test),
+            expect,
+            f"incorrect, expect is {expect}",
+        )
+
+    def test_case_2(self):
+        solution = Solution()
+        nums_test = [3, 2, 4]
+        target_test = 6
+        expect = [1, 2]
+        self.assertEqual(
+            solution.twoSum(nums_test, target_test),
+            expect,
+            f"incorrect, expect is {expect}",
+        )
+
+    def test_case_3(self):
+        solution = Solution()
+        nums_test = [3, 3]
+        target_test = 6
+        expect = [0, 1]
+        self.assertEqual(
+            solution.twoSum(nums_test, target_test),
+            expect,
+            f"incorrect, expect is {expect}",
+        )
+
+
+if __name__ == "__main__":
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestFunctions)
+    testResult = unittest.TextTestRunner(verbosity=2).run(suite)
