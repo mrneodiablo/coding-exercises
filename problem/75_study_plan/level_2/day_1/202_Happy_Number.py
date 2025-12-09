@@ -11,7 +11,7 @@ class Solution:
             tmp = 0
             break_loop.add(n)
             for i in str(n):
-                tmp += int(i)**2
+                tmp += int(i) ** 2
             n = tmp
         return True
 
@@ -27,7 +27,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.isHappy(n)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -36,7 +36,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.isHappy(n)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

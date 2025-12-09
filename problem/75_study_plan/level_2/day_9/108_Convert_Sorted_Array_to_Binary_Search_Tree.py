@@ -29,10 +29,11 @@ class Solution:
             return None
 
         mid_node = total_nums // 2
-        return TreeNode(nums[mid_node],
-                        left=self.sortedArrayToBST(nums[:mid_node]),
-                        right=self.sortedArrayToBST(nums[mid_node+1:])
-                        )
+        return TreeNode(
+            nums[mid_node],
+            left=self.sortedArrayToBST(nums[:mid_node]),
+            right=self.sortedArrayToBST(nums[mid_node + 1:]),
+        )
 
 
 class TestFunctions(unittest.TestCase):
@@ -47,7 +48,8 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(preorderTraversal(self.solution.sortedArrayToBST(nums))),
             str(expect),
-            "incorrect, expect is " + str(expect))
+            "incorrect, expect is " + str(expect),
+        )
 
 
 if __name__ == "__main__":

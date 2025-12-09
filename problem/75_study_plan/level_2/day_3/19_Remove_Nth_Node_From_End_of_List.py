@@ -43,29 +43,25 @@ class TestFunctions(unittest.TestCase):
 
     def test_run_1(self):
         # test case
-        head = ListNode(1,
-                        ListNode(2,
-                                 ListNode(3,
-                                          ListNode(4,
-                                                   ListNode(5)))))
+        head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
         n = 2
         expect = ListNode(1, ListNode(2, ListNode(3, ListNode(5, None))))
-        self.assertEqual(sum_link_list(
-            self.solution.removeNthFromEnd(head, n)
-        ),
+        self.assertEqual(
+            sum_link_list(self.solution.removeNthFromEnd(head, n)),
             sum_link_list(expect),
-            "incorrect, expect is " + str(sum_link_list(expect)))
+            "incorrect, expect is " + str(sum_link_list(expect)),
+        )
 
     def test_run_2(self):
         # test case
         head = ListNode(1)
         n = 1
         expect = 0
-        self.assertEqual(sum_link_list(
-            self.solution.removeNthFromEnd(head, n)
-        ),
+        self.assertEqual(
+            sum_link_list(self.solution.removeNthFromEnd(head, n)),
             expect,
-            "incorrect, expect is " + str(expect))
+            "incorrect, expect is " + str(expect),
+        )
 
 
 if __name__ == "__main__":

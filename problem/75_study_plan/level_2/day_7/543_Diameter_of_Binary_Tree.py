@@ -40,9 +40,11 @@ class TestFunctions(unittest.TestCase):
             right=TreeNode(3),
         )
         expect = 3
-        self.assertEqual(str(self.solution.diameterOfBinaryTree(root)),
-                         str(expect),
-                         "incorrect, expect is " + str(expect))
+        self.assertEqual(
+            str(self.solution.diameterOfBinaryTree(root)),
+            str(expect),
+            "incorrect, expect is " + str(expect),
+        )
 
 
 if __name__ == "__main__":

@@ -25,7 +25,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.longestCommonPrefix(strs)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -34,7 +34,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.longestCommonPrefix(strs)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

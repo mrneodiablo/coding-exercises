@@ -26,7 +26,7 @@ class Solution:
                 prefixSum += root.val
 
                 # number of paths that ends at current node
-                count = sumHash[prefixSum-targetSum]
+                count = sumHash[prefixSum - targetSum]
 
                 # Add value of this prefixSum
                 sumHash[prefixSum] += 1
@@ -50,10 +50,11 @@ class TestFunctions(unittest.TestCase):
         # test case
         root = TreeNode(
             10,
-            left=TreeNode(5,
-                          left=TreeNode(3, left=TreeNode(3),
-                                        right=TreeNode(-2)),
-                          right=TreeNode(2, left=None, right=TreeNode(1))),
+            left=TreeNode(
+                5,
+                left=TreeNode(3, left=TreeNode(3), right=TreeNode(-2)),
+                right=TreeNode(2, left=None, right=TreeNode(1)),
+            ),
             right=TreeNode(-3, left=None, right=TreeNode(11)),
         )
         targetSum = 8
@@ -61,7 +62,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             self.solution.pathSum(root, targetSum),
             expect,
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

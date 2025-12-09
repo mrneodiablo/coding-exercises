@@ -13,16 +13,16 @@ class Solution:
             first = set_words[0]
             if first[0] == first[1]:
                 if (counter[first] % 2) == 0:
-                    ans += (counter[first])*2
+                    ans += (counter[first]) * 2
                 else:
-                    ans += (counter[first]-1)*2
+                    ans += (counter[first] - 1) * 2
                     if not count_midle:
                         ans += 2
                         count_midle = True
 
             else:
                 if first[::-1] in set_words:
-                    ans += min(counter[first], counter[first[::-1]])*2*2
+                    ans += min(counter[first], counter[first[::-1]]) * 2 * 2
                     set_words.remove(first[::-1])
 
             set_words.remove(first)
@@ -39,29 +39,46 @@ class TestFunctions(unittest.TestCase):
         # test case
         words = ["lc", "cl", "gg"]
         expect = 6
-        self.assertEqual(self.solution.longestPalindrome(words),
-                         expect,
-                         "incorrect, expect is " + str(expect)
-                         )
+        self.assertEqual(
+            self.solution.longestPalindrome(words),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
     def test_run_2(self):
         # test case
-        words = ["dd", "aa", "bb", "dd", "aa", "dd", "bb",
-                 "dd", "aa", "cc", "bb", "cc", "dd", "cc"]
+        words = [
+            "dd",
+            "aa",
+            "bb",
+            "dd",
+            "aa",
+            "dd",
+            "bb",
+            "dd",
+            "aa",
+            "cc",
+            "bb",
+            "cc",
+            "dd",
+            "cc",
+        ]
         expect = 22
-        self.assertEqual(self.solution.longestPalindrome(words),
-                         expect,
-                         "incorrect, expect is " + str(expect)
-                         )
+        self.assertEqual(
+            self.solution.longestPalindrome(words),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
     def test_run_3(self):
         # test case
         words = ["em", "pe", "mp", "ee", "pp", "me", "ep", "em", "em", "me"]
         expect = 14
-        self.assertEqual(self.solution.longestPalindrome(words),
-                         expect,
-                         "incorrect, expect is " + str(expect)
-                         )
+        self.assertEqual(
+            self.solution.longestPalindrome(words),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
 
 if __name__ == "__main__":

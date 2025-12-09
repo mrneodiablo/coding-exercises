@@ -11,12 +11,12 @@ class Solution:
         # total_elements_with_max_freq, last row elements
         max_freq_ele_count = 0
         i = 0
-        while (i < len(freq)):
+        while i < len(freq):
             if freq[i] == max_freq:
                 max_freq_ele_count += 1
             i += 1
 
-        ans = (max_freq - 1) * (n+1) + max_freq_ele_count
+        ans = (max_freq - 1) * (n + 1) + max_freq_ele_count
 
         return max(ans, len(tasks))
 
@@ -31,20 +31,22 @@ class TestFunctions(unittest.TestCase):
         tasks = ["A", "A", "A", "B", "B", "B"]
         n = 2
         expect = 8
-        self.assertEqual(self.solution.leastInterval(tasks, n),
-                         expect,
-                         "incorrect, expect is " + str(expect)
-                         )
+        self.assertEqual(
+            self.solution.leastInterval(tasks, n),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
     def test_run_2(self):
         # test case
         tasks = ["A", "A", "A", "B", "B", "B"]
         n = 0
         expect = 6
-        self.assertEqual(self.solution.leastInterval(tasks, n),
-                         expect,
-                         "incorrect, expect is " + str(expect)
-                         )
+        self.assertEqual(
+            self.solution.leastInterval(tasks, n),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
 
 if __name__ == "__main__":

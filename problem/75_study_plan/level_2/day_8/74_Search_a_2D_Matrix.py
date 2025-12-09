@@ -6,9 +6,9 @@ class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         row, col = len(matrix), len(matrix[0])
         lower = 0
-        higher = row*col - 1
+        higher = row * col - 1
         while lower <= higher:
-            middle = (lower + higher)//2
+            middle = (lower + higher) // 2
             r, c = divmod(middle, col)
             if target < matrix[r][c]:
                 higher = middle - 1
@@ -32,7 +32,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.searchMatrix(matrix, target)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -42,7 +42,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.searchMatrix(matrix, target)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

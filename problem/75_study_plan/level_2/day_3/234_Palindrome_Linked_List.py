@@ -27,17 +27,21 @@ class TestFunctions(unittest.TestCase):
         # test case
         head = ListNode(1, ListNode(2, ListNode(2, ListNode(1))))
         expect = True
-        self.assertEqual(self.solution.isPalindrome(head),
-                         expect,
-                         "incorrect, expect is " + str(expect))
+        self.assertEqual(
+            self.solution.isPalindrome(head),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
     def test_run_2(self):
         # test case
         head = ListNode(1, ListNode(2))
         expect = False
-        self.assertEqual(self.solution.isPalindrome(head),
-                         expect,
-                         "incorrect, expect is " + str(expect))
+        self.assertEqual(
+            self.solution.isPalindrome(head),
+            expect,
+            "incorrect, expect is " + str(expect),
+        )
 
 
 if __name__ == "__main__":

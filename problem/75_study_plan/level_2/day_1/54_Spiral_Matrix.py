@@ -16,19 +16,19 @@ class Solution:
 
             # get every things in right
             for i in range(top, bottom):
-                ans.append(matrix[i][right-1])
+                ans.append(matrix[i][right - 1])
             right -= 1
 
             if not (left < right and top < bottom):
                 break
 
             # get every things in bottom
-            for i in range(right-1, left, -1):
-                ans.append(matrix[bottom-1][i])
+            for i in range(right - 1, left, -1):
+                ans.append(matrix[bottom - 1][i])
             bottom -= 1
 
             # get every things in left
-            for i in range(bottom, top-1, -1):
+            for i in range(bottom, top - 1, -1):
                 ans.append(matrix[i][left])
             left += 1
         return ans
@@ -46,7 +46,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.spiralOrder(matrix)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -56,7 +56,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.spiralOrder(matrix)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 

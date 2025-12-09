@@ -51,12 +51,21 @@ class TestFunctions(unittest.TestCase):
 
     def test_run_1(self):
         # test case
-        head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
-        expect = ListNode(1, ListNode(
-            3, ListNode(5, ListNode(2, ListNode(4)))))
-        self.assertEqual(travesalLinkList(self.solution.oddEvenList(head)),
-                         travesalLinkList(expect),
-                         "incorrect, expect is " + str(expect))
+        head = ListNode(1,
+                        ListNode(2,
+                                 ListNode(3,
+                                          ListNode(4,
+                                                   ListNode(5)))))
+        expect = ListNode(1,
+                          ListNode(3,
+                                   ListNode(5,
+                                            ListNode(2,
+                                                     ListNode(4)))))
+        self.assertEqual(
+            travesalLinkList(self.solution.oddEvenList(head)),
+            travesalLinkList(expect),
+            "incorrect, expect is " + str(expect),
+        )
 
 
 if __name__ == "__main__":

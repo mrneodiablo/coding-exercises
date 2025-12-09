@@ -25,11 +25,15 @@ def preorderTraversal(root: Optional[TreeNode]) -> List[int]:
 
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        return TreeNode(
-            root.val,
-            right=self.invertTree(root.left),
-            left=self.invertTree(root.right)
-        ) if root else None
+        return (
+            TreeNode(
+                root.val,
+                right=self.invertTree(root.left),
+                left=self.invertTree(root.right),
+            )
+            if root
+            else None
+        )
 
 
 class TestFunctions(unittest.TestCase):
@@ -58,11 +62,11 @@ class TestFunctions(unittest.TestCase):
             right=None,
         )
         expect = [1, 2]
-        self.assertEqual(str(preorderTraversal(
-            self.solution.invertTree(root)
-        )),
+        self.assertEqual(
+            str(preorderTraversal(self.solution.invertTree(root))),
             str(expect),
-            "incorrect, expect is " + str(expect))
+            "incorrect, expect is " + str(expect),
+        )
 
 
 if __name__ == "__main__":

@@ -19,12 +19,12 @@ class Solution:
         int_num2 = 0
 
         for i, s in enumerate(num1):
-            int_num1 += (dic[s] - 48)*10**(len(num1)-i-1)
+            int_num1 += (dic[s] - 48) * 10 ** (len(num1) - i - 1)
 
         for i, s in enumerate(num2):
-            int_num2 += (dic[s] - 48)*10**(len(num2)-i-1)
+            int_num2 += (dic[s] - 48) * 10 ** (len(num2) - i - 1)
 
-        return str(int_num1*int_num2)
+        return str(int_num1 * int_num2)
 
 
 class TestFunctions(unittest.TestCase):
@@ -40,7 +40,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.multiply(num1, num2)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
     def test_run_2(self):
@@ -51,7 +51,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(
             str(self.solution.multiply(num1, num2)),
             str(expect),
-            "incorrect, expect is " + str(expect)
+            "incorrect, expect is " + str(expect),
         )
 
 
