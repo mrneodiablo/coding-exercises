@@ -1,3 +1,6 @@
+import unittest
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -51,17 +54,28 @@ class BinarySearchTree:
         return True
 
 
-my_tree = BinarySearchTree()
-my_tree.insert(47)
-my_tree.insert(21)
-my_tree.insert(76)
-my_tree.insert(18)
-my_tree.insert(27)
-my_tree.insert(52)
-my_tree.insert(82)
+class TestFunctions(unittest.TestCase):
 
-print("BST is valid:")
-print(my_tree.is_valid_bst())
+    def test_is_valid_bst(self):
+        my_tree = BinarySearchTree()
+        my_tree.insert(47)
+        my_tree.insert(21)
+        my_tree.insert(76)
+        my_tree.insert(18)
+        my_tree.insert(27)
+        my_tree.insert(52)
+        my_tree.insert(82)
+
+        self.assertEqual(
+            my_tree.is_valid_bst(),
+            True,
+            "BST should be valid",
+        )
+
+
+if __name__ == "__main__":
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestFunctions)
+    testResult = unittest.TextTestRunner(verbosity=2).run(suite)
 
 
 """
@@ -69,5 +83,4 @@ print(my_tree.is_valid_bst())
     ----------------
     BST is valid:
     True
-
  """

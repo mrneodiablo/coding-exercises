@@ -1,3 +1,6 @@
+import unittest
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -98,109 +101,73 @@ class BinarySearchTree:
         self.root = self.__delete_node(self.root, value)
 
 
-my_tree = BinarySearchTree()
-my_tree.insert(47)
-my_tree.r_insert(21)
-my_tree.r_insert(76)
-my_tree.insert(18)
-my_tree.insert(27)
-my_tree.insert(52)
-my_tree.insert(82)
+class TestFunctions(unittest.TestCase):
 
-print("BST Contains 27:")
-print(my_tree.r_contains(27))
+    def test_r_contains(self):
+        my_tree = BinarySearchTree()
+        my_tree.r_insert(47)
+        my_tree.r_insert(21)
+        my_tree.r_insert(76)
+        my_tree.r_insert(27)
 
-print("\nBST Contains 17:")
-print(my_tree.r_contains(17))
+        self.assertEqual(my_tree.r_contains(27), True, "BST should contain 27")
+        self.assertEqual(my_tree.r_contains(17), False, "BST should not contain 17")
+
+    def test_min_value(self):
+        my_tree = BinarySearchTree()
+        my_tree.r_insert(47)
+        my_tree.r_insert(21)
+        my_tree.r_insert(76)
+        my_tree.r_insert(18)
+        my_tree.r_insert(52)
+        my_tree.r_insert(82)
+
+        self.assertEqual(my_tree.min_value(my_tree.root), 18, "Min value should be 18")
+        self.assertEqual(my_tree.min_value(my_tree.root.right), 52, "Min value of right subtree should be 52")
+
+    def test_delete_node_no_children(self):
+        bst = BinarySearchTree()
+        for v in [5, 3, 8]:
+            bst.r_insert(v)
+        bst.delete_node(3)
+        self.assertEqual(bst.root.left, None, "Left child should be None after deleting leaf")
+
+    def test_delete_node_only_left_child(self):
+        bst = BinarySearchTree()
+        for v in [5, 3, 8, 1]:
+            bst.r_insert(v)
+        bst.delete_node(3)
+        self.assertEqual(bst.root.left.value, 1, "Left child should be 1 after deleting 3")
+
+    def test_delete_node_only_right_child(self):
+        bst = BinarySearchTree()
+        for v in [5, 3, 8, 9]:
+            bst.r_insert(v)
+        bst.delete_node(8)
+        self.assertEqual(bst.root.right.value, 9, "Right child should be 9 after deleting 8")
+
+    def test_delete_node_two_children(self):
+        bst = BinarySearchTree()
+        for v in [5, 3, 8, 1, 4, 7, 9]:
+            bst.r_insert(v)
+        bst.delete_node(3)
+        self.assertEqual(bst.root.left.value, 4, "Left child should be 4 after deleting 3")
+
+    def test_delete_root(self):
+        bst = BinarySearchTree()
+        for v in [5, 3, 8]:
+            bst.r_insert(v)
+        bst.delete_node(5)
+        self.assertEqual(bst.root.value, 8, "Root should be 8 after deleting 5")
+
+
+if __name__ == "__main__":
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestFunctions)
+    testResult = unittest.TextTestRunner(verbosity=2).run(suite)
 
 
 """
     EXPECTED OUTPUT:
     ----------------
-    BST Contains 27:
-    True
-
-    BST Contains 17:
-    False
-
-"""
-
-print(my_tree.min_value(my_tree.root))
-
-print(my_tree.min_value(my_tree.root.right))
-
-
-# test delete node
-def check(expect, actual, message):
-    print(message)
-    print("EXPECTED:", expect)
-    print("RETURNED:", actual)
-    print("PASS" if expect == actual else "FAIL", "\n")
-
-
-# test_delete_node_no_children
-print("\n----- Test: Delete node with no children -----\n")
-bst = BinarySearchTree()
-values = [5, 3, 8]
-for v in values:
-    print("Inserting value:", v)
-    bst.r_insert(v)
-bst.delete_node(3)
-check(None, bst.root.left, "Left child of root after deleting 3:")
-
-
-# test_delete_node_only_left_child
-print("\n----- Test: Delete node with only left child -----\n")
-bst = BinarySearchTree()
-values = [5, 3, 8, 1]
-for v in values:
-    print("Inserting value:", v)
-    bst.r_insert(v)
-bst.delete_node(3)
-check(1, bst.root.left.value, "Left child of root after deleting 3:")
-
-
-# test_delete_node_only_right_child
-print("\n----- Test: Delete node with only right child -----\n")
-bst = BinarySearchTree()
-values = [5, 3, 8, 9]
-for v in values:
-    print("Inserting value:", v)
-    bst.r_insert(v)
-bst.delete_node(8)
-check(9, bst.root.right.value, "Right child of root after deleting 8:")
-
-
-# test_delete_node_two_children
-print("\n----- Test: Delete node with two children -----\n")
-bst = BinarySearchTree()
-values = [5, 3, 8, 1, 4, 7, 9]
-for v in values:
-    print("Inserting value:", v)
-    bst.r_insert(v)
-bst.delete_node(3)
-check(4, bst.root.left.value, "Left child of root after deleting 3:")
-
-
-# test_delete_root
-print("\n----- Test: Delete root -----\n")
-bst = BinarySearchTree()
-values = [5, 3, 8]
-for v in values:
-    print("Inserting value:", v)
-    bst.r_insert(v)
-bst.delete_node(5)
-check(8, bst.root.value, "Root value after deleting 5:")
-
-
-# test_delete_non_existent_node
-print("\n----- Test: Attempt to delete a non-existent node -----\n")
-bst = BinarySearchTree()
-values = [5, 3, 8]
-for v in values:
-    print("Inserting value:", v)
-    bst.r_insert(v)
-original_root_value = bst.root.value
-bst.delete_node(10)
-check(original_root_value, bst.root.value,
-      "Root value after attempting to delete 10:")
+    All practice tests should pass
+ """

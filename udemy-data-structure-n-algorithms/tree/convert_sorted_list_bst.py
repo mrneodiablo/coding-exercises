@@ -1,3 +1,6 @@
+import unittest
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -88,52 +91,47 @@ class BinarySearchTree:
         #   +====================================================+
 
 
-#  +====================================================+
-#  |  Test code below will print output to "User logs"  |
-#  +====================================================+
+class TestFunctions(unittest.TestCase):
+
+    def test_empty_list(self):
+        bst = BinarySearchTree()
+        bst.sorted_list_to_bst([])
+        self.assertEqual(bst.is_balanced(), True, "Empty tree should be balanced")
+        self.assertEqual(bst.inorder_traversal(), [], "Empty tree traversal should be empty")
+
+    def test_single_element(self):
+        bst = BinarySearchTree()
+        bst.sorted_list_to_bst([10])
+        self.assertEqual(bst.is_balanced(), True, "Single element tree should be balanced")
+        self.assertEqual(bst.inorder_traversal(), [10], "Single element traversal")
+
+    def test_odd_number_elements(self):
+        bst = BinarySearchTree()
+        bst.sorted_list_to_bst([1, 2, 3, 4, 5])
+        self.assertEqual(bst.is_balanced(), True, "Tree should be balanced")
+        self.assertEqual(bst.inorder_traversal(), [1, 2, 3, 4, 5], "Inorder traversal should match")
+
+    def test_even_number_elements(self):
+        bst = BinarySearchTree()
+        bst.sorted_list_to_bst([1, 2, 3, 4, 5, 6])
+        self.assertEqual(bst.is_balanced(), True, "Tree should be balanced")
+        self.assertEqual(bst.inorder_traversal(), [1, 2, 3, 4, 5, 6], "Inorder traversal should match")
+
+    def test_large_sorted_list(self):
+        bst = BinarySearchTree()
+        large_sorted_list = list(range(1, 16))
+        bst.sorted_list_to_bst(large_sorted_list)
+        self.assertEqual(bst.is_balanced(), True, "Large tree should be balanced")
+        self.assertEqual(bst.inorder_traversal(), large_sorted_list, "Inorder traversal should match")
 
 
-def check_balanced_and_correct_traversal(bst_parameter, expected_traversal):
-    is_balanced = bst_parameter.is_balanced()
-    inorder = bst_parameter.inorder_traversal()
-    print("Is balanced:", is_balanced)
-    print("Inorder traversal:", inorder)
-    print("Expected traversal:", expected_traversal)
-    if is_balanced and inorder == expected_traversal:
-        print("PASS: Tree is balanced and inorder traversal is correct.\n")
-    else:
-        print(
-            "FAIL: Tree is balanced or inorder traversal is incorrect.\n"
-            )
+if __name__ == "__main__":
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestFunctions)
+    testResult = unittest.TextTestRunner(verbosity=2).run(suite)
 
 
-# Test: Convert an empty list
-print("\n----- Test: Convert Empty List -----\n")
-bst = BinarySearchTree()
-bst.sorted_list_to_bst([])
-check_balanced_and_correct_traversal(bst, [])
-
-# Test: Convert a list with one element
-print("\n----- Test: Convert Single Element List -----\n")
-bst = BinarySearchTree()
-bst.sorted_list_to_bst([10])
-check_balanced_and_correct_traversal(bst, [10])
-
-# Test: Convert a sorted list with odd number of elements
-print("\n----- Test: Convert Sorted List with Odd Number of Elements -----\n")
-bst = BinarySearchTree()
-bst.sorted_list_to_bst([1, 2, 3, 4, 5])
-check_balanced_and_correct_traversal(bst, [1, 2, 3, 4, 5])
-
-# Test: Convert a sorted list with even number of elements
-print("\n----- Test: Convert Sorted List with Even Number of Elements -----\n")
-bst = BinarySearchTree()
-bst.sorted_list_to_bst([1, 2, 3, 4, 5, 6])
-check_balanced_and_correct_traversal(bst, [1, 2, 3, 4, 5, 6])
-
-# Test: Convert a large sorted list
-print("\n----- Test: Convert Large Sorted List -----\n")
-bst = BinarySearchTree()
-large_sorted_list = list(range(1, 16))  # A list from 1 to 15
-bst.sorted_list_to_bst(large_sorted_list)
-check_balanced_and_correct_traversal(bst, large_sorted_list)
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    All tests should pass with balanced BST created from sorted lists
+ """

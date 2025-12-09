@@ -1,4 +1,5 @@
 from collections import deque
+import unittest
 
 
 class Node:
@@ -63,16 +64,29 @@ class BinarySearchTree:
         return result
 
 
-my_tree = BinarySearchTree()
-my_tree.insert(47)
-my_tree.insert(21)
-my_tree.insert(76)
-my_tree.insert(18)
-my_tree.insert(27)
-my_tree.insert(52)
-my_tree.insert(82)
+class TestFunctions(unittest.TestCase):
 
-print(my_tree.BFS())
+    def test_bfs(self):
+        my_tree = BinarySearchTree()
+        my_tree.insert(47)
+        my_tree.insert(21)
+        my_tree.insert(76)
+        my_tree.insert(18)
+        my_tree.insert(27)
+        my_tree.insert(52)
+        my_tree.insert(82)
+
+        expect = [47, 21, 76, 18, 27, 52, 82]
+        self.assertEqual(
+            my_tree.BFS(),
+            expect,
+            f"incorrect, expect is {expect}",
+        )
+
+
+if __name__ == "__main__":
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestFunctions)
+    testResult = unittest.TextTestRunner(verbosity=2).run(suite)
 
 
 """

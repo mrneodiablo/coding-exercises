@@ -1,3 +1,6 @@
+import unittest
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -131,108 +134,106 @@ class BinarySearchTree:
             parent.left = current.right
 
 
-def check(expect, actual, message):
-    print(message)
-    print("EXPECTED:", expect)
-    print("RETURNED:", actual)
-    print("PASS" if expect == actual else "FAIL", "\n")
+class TestFunctions(unittest.TestCase):
+
+    def test_contains_empty_tree(self):
+        bst = BinarySearchTree()
+        result = bst.contains(5)
+        self.assertEqual(result, False, "Check if 5 exists in an empty tree")
+
+    def test_contains_existing_value(self):
+        bst = BinarySearchTree()
+        bst.insert(10)
+        bst.insert(5)
+        bst.insert(15)
+
+        self.assertEqual(bst.contains(10), True, "Check if 10 exists")
+        self.assertEqual(bst.contains(5), True, "Check if 5 exists")
+        self.assertEqual(bst.contains(15), True, "Check if 15 exists")
+
+    def test_contains_not_existing_value(self):
+        bst = BinarySearchTree()
+        bst.insert(10)
+        bst.insert(5)
+        result = bst.contains(15)
+        self.assertEqual(result, False, "Check if 15 exists")
+
+    def test_contains_with_duplicate_inserts(self):
+        bst = BinarySearchTree()
+        bst.insert(10)
+        bst.insert(10)
+        result = bst.contains(10)
+        self.assertEqual(result, True, "Check if 10 exists with duplicate inserts")
+
+    def test_contains_with_left_and_right(self):
+        bst = BinarySearchTree()
+        bst.insert(10)
+        bst.insert(5)
+        bst.insert(15)
+        bst.insert(1)
+        bst.insert(8)
+        bst.insert(12)
+        bst.insert(20)
+
+        self.assertEqual(bst.contains(1), True, "Check if 1 exists")
+        self.assertEqual(bst.contains(8), True, "Check if 8 exists")
+        self.assertEqual(bst.contains(12), True, "Check if 12 exists")
+        self.assertEqual(bst.contains(20), True, "Check if 20 exists")
+
+    def test_delete_leaf_node(self):
+        bst = BinarySearchTree()
+        bst.insert(10)
+        bst.insert(5)
+        bst.insert(15)
+        result = bst.delete_node(5)
+
+        self.assertEqual(result, True, "Delete leaf node 5")
+        self.assertEqual(
+            bst.contains(5), False, "Check if 5 still exists after deletion"
+        )
+        self.assertEqual(bst.contains(10), True, "Check if 10 still exists")
+
+    def test_delete_node_with_one_child(self):
+        bst = BinarySearchTree()
+        bst.insert(10)
+        bst.insert(5)
+        bst.insert(15)
+        bst.insert(12)
+        result = bst.delete_node(15)
+
+        self.assertEqual(result, True, "Delete node 15 with one child")
+        self.assertEqual(
+            bst.contains(15), False, "Check if 15 still exists after deletion"
+        )
+        self.assertEqual(bst.contains(12), True, "Check if 12 still exists")
+
+    def test_delete_node_with_two_children(self):
+        bst = BinarySearchTree()
+        bst.insert(10)
+        bst.insert(5)
+        bst.insert(15)
+        bst.insert(3)
+        bst.insert(7)
+        bst.insert(12)
+        bst.insert(18)
+        result = bst.delete_node(10)
+
+        self.assertEqual(result, True, "Delete root node 10 with two children")
+        self.assertEqual(
+            bst.contains(10), False, "Check if 10 still exists after deletion"
+        )
+        self.assertEqual(
+            bst.contains(12), True, "Check if 12 still exists (should be new root)"
+        )
+
+    def test_delete_non_existing_node(self):
+        bst = BinarySearchTree()
+        bst.insert(10)
+        bst.insert(5)
+        result = bst.delete_node(20)
+        self.assertEqual(result, False, "Try to delete non-existing node 20")
 
 
 if __name__ == "__main__":
-
-    print("\n----- Test: Contains on Empty Tree -----\n")
-    bst = BinarySearchTree()
-    result = bst.contains(5)
-    check(False, result, "Check if 5 exists in an empty tree:")
-
-    print("\n----- Test: Contains Existing Value -----\n")
-    bst = BinarySearchTree()
-    bst.insert(10)
-    bst.insert(5)
-    bst.insert(15)
-    result = bst.contains(10)
-    check(True, result, "Check if 10 exists:")
-    result = bst.contains(5)
-    check(True, result, "Check if 5 exists:")
-    result = bst.contains(15)
-    check(True, result, "Check if 15 exists:")
-
-    print("\n----- Test: Contains Not Existing Value -----\n")
-    bst = BinarySearchTree()
-    bst.insert(10)
-    bst.insert(5)
-    result = bst.contains(15)
-    check(False, result, "Check if 15 exists:")
-
-    print("\n----- Test: Contains with Duplicate Inserts -----\n")
-    bst = BinarySearchTree()
-    bst.insert(10)
-    bst.insert(10)
-    result = bst.contains(10)
-    check(True, result, "Check if 10 exists with duplicate inserts:")
-
-    print("\n----- Test: Contains with Left and Right -----\n")
-    bst = BinarySearchTree()
-    bst.insert(10)
-    bst.insert(5)
-    bst.insert(15)
-    bst.insert(1)
-    bst.insert(8)
-    bst.insert(12)
-    bst.insert(20)
-    result = bst.contains(1)
-    check(True, result, "Check if 1 exists:")
-    result = bst.contains(8)
-    check(True, result, "Check if 8 exists:")
-    result = bst.contains(12)
-    check(True, result, "Check if 12 exists:")
-    result = bst.contains(20)
-    check(True, result, "Check if 20 exists:")
-
-    print("\n----- Test: Delete Leaf Node -----\n")
-    bst = BinarySearchTree()
-    bst.insert(10)
-    bst.insert(5)
-    bst.insert(15)
-    result = bst.delete_node(5)
-    check(True, result, "Delete leaf node 5:")
-    result = bst.contains(5)
-    check(False, result, "Check if 5 still exists after deletion:")
-    result = bst.contains(10)
-    check(True, result, "Check if 10 still exists:")
-
-    print("\n----- Test: Delete Node with One Child -----\n")
-    bst = BinarySearchTree()
-    bst.insert(10)
-    bst.insert(5)
-    bst.insert(15)
-    bst.insert(12)
-    result = bst.delete_node(15)
-    check(True, result, "Delete node 15 with one child:")
-    result = bst.contains(15)
-    check(False, result, "Check if 15 still exists after deletion:")
-    result = bst.contains(12)
-    check(True, result, "Check if 12 still exists:")
-
-    print("\n----- Test: Delete Node with Two Children -----\n")
-    bst = BinarySearchTree()
-    bst.insert(10)
-    bst.insert(5)
-    bst.insert(15)
-    bst.insert(3)
-    bst.insert(7)
-    bst.insert(12)
-    bst.insert(18)
-    result = bst.delete_node(10)
-    check(True, result, "Delete root node 10 with two children:")
-    result = bst.contains(10)
-    check(False, result, "Check if 10 still exists after deletion:")
-    result = bst.contains(12)
-    check(True, result, "Check if 12 still exists (should be new root):")
-
-    print("\n----- Test: Delete Non-existing Node -----\n")
-    bst = BinarySearchTree()
-    bst.insert(10)
-    bst.insert(5)
-    result = bst.delete_node(20)
-    check(False, result, "Try to delete non-existing node 20:")
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestFunctions)
+    testResult = unittest.TextTestRunner(verbosity=2).run(suite)

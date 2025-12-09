@@ -1,3 +1,6 @@
+import unittest
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -37,9 +40,7 @@ class BinarySearchTree:
         current_node.left = self.__invert_tree(current_node.left)
         current_node.right = self.__invert_tree(current_node.right)
 
-        current_node.left, current_node.right = (
-            current_node.right, current_node.left
-            )
+        current_node.left, current_node.right = (current_node.right, current_node.left)
 
         return current_node
 
@@ -89,30 +90,73 @@ def tree_to_list(node):
     return result
 
 
-def test_invert_binary_search_tree():
-    print("\n--- Testing Inversion of Binary Search Tree ---")
-    # Define test scenarios
-    scenarios = [
-        ("Empty Tree", [], []),
-        ("Single Node", [1], [1]),
-        ("Tree with Left Child", [2, 1], [2, None, 1]),
-        ("Tree with Right Child", [1, 2], [1, 2]),
-        ("Multi-Level Tree", [3, 1, 5, 2], [3, 5, 1, None, None, 2]),
-        ("Invert Twice", [4, 2, 6, 1, 3, 5, 7], [4, 2, 6, 1, 3, 5, 7]),
-    ]
+class TestFunctions(unittest.TestCase):
 
-    for description, setup, expected in scenarios:
+    def tree_to_list(self, node):
+        """Helper function to convert tree to list level-wise for easy comparison"""
+        if not node:
+            return []
+        queue = [node]
+        result = []
+        while queue:
+            current = queue.pop(0)
+            if current:
+                result.append(current.value)
+                queue.append(current.left)
+                queue.append(current.right)
+            else:
+                result.append(None)
+        while result and result[-1] is None:
+            result.pop()
+        return result
+
+    def test_empty_tree(self):
         bst = BinarySearchTree()
-        for num in setup:
-            bst.r_insert(num)
-        if description == "Invert Twice":
-            bst.invert()  # First inversion
-        # Perform inversion (or second inversion for the specific case)
         bst.invert()
-        result = tree_to_list(bst.root)
-        print(f"\n{description}: {'Pass' if result == expected else 'Fail'}")
-        print(f"Expected: {expected}")
-        print(f"Actual:   {result}")
+        result = self.tree_to_list(bst.root)
+        self.assertEqual(result, [], "Empty tree should remain empty")
+
+    def test_single_node(self):
+        bst = BinarySearchTree()
+        bst.r_insert(1)
+        bst.invert()
+        result = self.tree_to_list(bst.root)
+        self.assertEqual(result, [1], "Single node should remain unchanged")
+
+    def test_tree_with_left_child(self):
+        bst = BinarySearchTree()
+        bst.r_insert(2)
+        bst.r_insert(1)
+        bst.invert()
+        result = self.tree_to_list(bst.root)
+        self.assertEqual(result, [2, None, 1], "Left child should move to right")
+
+    def test_tree_with_right_child(self):
+        bst = BinarySearchTree()
+        bst.r_insert(1)
+        bst.r_insert(2)
+        bst.invert()
+        result = self.tree_to_list(bst.root)
+        self.assertEqual(result, [1, 2], "Right child should move to left")
+
+    def test_multi_level_tree(self):
+        bst = BinarySearchTree()
+        for num in [3, 1, 5, 2]:
+            bst.r_insert(num)
+        bst.invert()
+        result = self.tree_to_list(bst.root)
+        self.assertEqual(
+            result, [3, 5, 1, None, None, 2], "Multi-level tree should be inverted"
+        )
 
 
-test_invert_binary_search_tree()
+if __name__ == "__main__":
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestFunctions)
+    testResult = unittest.TextTestRunner(verbosity=2).run(suite)
+
+
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    All inversion tests should pass
+ """

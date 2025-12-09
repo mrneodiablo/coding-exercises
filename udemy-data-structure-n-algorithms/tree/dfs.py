@@ -1,4 +1,7 @@
 
+import unittest
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -107,35 +110,69 @@ class BinarySearchTree:
         return result
 
 
-my_tree = BinarySearchTree()
-my_tree.insert(47)
-my_tree.insert(21)
-my_tree.insert(76)
-my_tree.insert(18)
-my_tree.insert(27)
-my_tree.insert(52)
-my_tree.insert(82)
+class TestFunctions(unittest.TestCase):
 
-print(my_tree.dfs_pre_order())
+    def test_dfs_pre_order(self):
+        my_tree = BinarySearchTree()
+        my_tree.insert(47)
+        my_tree.insert(21)
+        my_tree.insert(76)
+        my_tree.insert(18)
+        my_tree.insert(27)
+        my_tree.insert(52)
+        my_tree.insert(82)
+
+        expect = [47, 21, 18, 27, 76, 52, 82]
+        self.assertEqual(
+            my_tree.dfs_pre_order(),
+            expect,
+            f"incorrect, expect is {expect}",
+        )
+
+    def test_dfs_post_order(self):
+        my_tree = BinarySearchTree()
+        my_tree.insert(47)
+        my_tree.insert(21)
+        my_tree.insert(76)
+        my_tree.insert(18)
+        my_tree.insert(27)
+        my_tree.insert(52)
+        my_tree.insert(82)
+
+        expect = [18, 27, 21, 52, 82, 76, 47]
+        self.assertEqual(
+            my_tree.dfs_post_order(),
+            expect,
+            f"incorrect, expect is {expect}",
+        )
+
+    def test_dfs_in_order(self):
+        my_tree = BinarySearchTree()
+        my_tree.insert(47)
+        my_tree.insert(21)
+        my_tree.insert(76)
+        my_tree.insert(18)
+        my_tree.insert(27)
+        my_tree.insert(52)
+        my_tree.insert(82)
+
+        expect = [18, 21, 27, 47, 52, 76, 82]
+        self.assertEqual(
+            my_tree.dfs_in_order(),
+            expect,
+            f"incorrect, expect is {expect}",
+        )
+
+
+if __name__ == "__main__":
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestFunctions)
+    testResult = unittest.TextTestRunner(verbosity=2).run(suite)
+
+
 """
     EXPECTED OUTPUT:
     ----------------
-    [47, 21, 76, 18, 27, 52, 82]
-
- """
-
-print(my_tree.dfs_post_order())
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    [18, 27, 21, 52, 82, 76, 47]
-
- """
-
-print(my_tree.dfs_in_order())
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    [18, 21, 27, 47, 52, 76, 82]
-
+    Pre-order: [47, 21, 18, 27, 76, 52, 82]
+    Post-order: [18, 27, 21, 52, 82, 76, 47]
+    In-order: [18, 21, 27, 47, 52, 76, 82]
  """
