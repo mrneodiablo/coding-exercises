@@ -70,4 +70,6 @@ Fundamentals → Patterns → Systems Thinking → Problem Solving → Real Solu
 
 AI is a tool. My brain is the engineer.
 
+## Recognition of Patterns
+- Dymanic Programming: Always has find the min/max or count the ways type of questions. Typically involves overlapping subproblems and optimal substructure. Examples: Climbing Stairs
 ---
