@@ -31,9 +31,42 @@ import unittest
 
 
 class Solution:
-    def combinationSum(self,
-                       candidates: List[int],
-                       target: int) -> List[List[int]]:
+    def uniq(self, lst):
+        last = object()
+        for item in lst:
+            if item == last:
+                continue
+            yield item
+            last = item
+
+    # re-implement based on backtracking idea, it's spagetti codes but it shows with the same idea, we have a ton of way to implement
+    # as long as we understand the idea
+    def combinationSumWithFor(self, candidates: List[int], target: int):
+        output = []
+        candidates = sorted(candidates)
+        for i in range(len(candidates)):
+            current = [candidates[i]]
+            j = 0
+            while sum(current) <= target and j < len(candidates):
+
+                if sum(current) == target:
+                    current.sort()
+                    output.append(current)
+                    break
+
+                if target - sum(current) < min(candidates):
+                    current.pop()
+                    j += 1
+                    continue
+
+                if target - sum(current) >= min(candidates):
+                    current.append(candidates[j])
+
+        if len(output) == 0:
+            return []
+        return self.uniq(output)
+
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         output = []
         candidates = sorted(candidates)
 
@@ -43,7 +76,8 @@ class Solution:
                     backtracking(
                         b_candidates,
                         b_target - b_candidates[i],
-                        current_combination + [b_candidates[i]], i
+                        current_combination + [b_candidates[i]],
+                        i,
                     )
                 if b_candidates[i] == b_target:
                     output.append(current_combination + [b_candidates[i]])
@@ -63,7 +97,7 @@ class TestCombinationSum(unittest.TestCase):
         candidates = [2, 3, 6, 7]
         target = 7
         expected = [[2, 2, 3], [7]]
-        result = self.solution.combinationSum(candidates, target)
+        result = self.solution.combinationSumWithFor(candidates, target)
 
         # Sort both result and expected for comparison
         result_sorted = [sorted(combo) for combo in result]
@@ -76,7 +110,7 @@ class TestCombinationSum(unittest.TestCase):
         candidates = [2, 3, 5]
         target = 8
         expected = [[2, 2, 2, 2], [2, 3, 3], [3, 5]]
-        result = self.solution.combinationSum(candidates, target)
+        result = self.solution.combinationSumWithFor(candidates, target)
 
         # Sort both result and expected for comparison
         result_sorted = [sorted(combo) for combo in result]
@@ -89,7 +123,7 @@ class TestCombinationSum(unittest.TestCase):
         candidates = [2]
         target = 1
         expected = []
-        result = self.solution.combinationSum(candidates, target)
+        result = self.solution.combinationSumWithFor(candidates, target)
 
         self.assertEqual(result, expected)
 
@@ -160,9 +194,7 @@ def manual_test():
     print("Test 5: Larger numbers requiring fewer combinations")
     candidates5 = [7, 3, 2]
     target5 = 18
-    expected_count5 = (
-        4
-    )
+    expected_count5 = 4
     result5 = solution.combinationSum(candidates5, target5)
 
     print(f"  Input: candidates = {candidates5}, target = {target5}")
